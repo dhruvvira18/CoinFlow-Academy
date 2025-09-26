@@ -1,0 +1,72 @@
+@import url("../global_styles.css");
+.login_container {
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-accent-color);
+    font-weight: bold;
+    padding: 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo_container {
+    background-color: var(--primary-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.account_details {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.logo_text {
+    font-weight: bold;
+    background-image: linear-gradient(to right, var(--primary-accent-color), var(--secondary-accent-color), var(--tertiary-accent-color), var(--tertiary-accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    background-size: 250% auto;
+    animation: alternateGradient 3s linear infinite;
+}
+
+@keyframes alternateGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.logo_subtext {
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
