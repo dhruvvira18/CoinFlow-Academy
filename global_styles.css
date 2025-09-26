@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-background-color: #121212;
+    --secondary-background-color: #1E1E1E;
+    --primary-accent-color: #B84D3A;
+    --secondary-accent-color: #D46A54;
+    --tertiary-accent-color: #FA9782;
+    --quaternary-accent-color: #F9C4B6;
+    --text-color: #E0E0E0;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--primary-background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: var(--tertiary-accent-color);
+    color: var(--primary-accent-color);
+    font-weight: bold;
+    border: 1px solid var(--primary-accent-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--quaternary-accent-color);
+}
+
+input, textarea {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-accent-color);
+    padding: 10px;
+    font-family: var(--font-family);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--tertiary-accent-color);
+    outline: none;
+}
+
+a {
+    color: var(--primary-accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--tertiary-accent-color);
+}
