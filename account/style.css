@@ -34,12 +34,12 @@ form {
 
 .logo_text {
     font-weight: bold;
-    background-image: linear-gradient(to right, var(--primary-accent-color), var(--secondary-accent-color), var(--tertiary-accent-color), var(--tertiary-accent-color));
+    background-image: linear-gradient(to right, var(--primary-accent-color), var(--secondary-accent-color), var(--tertiary-accent-color), var(--primary-accent-color), var(--secondary-accent-color), var(--tertiary-accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    background-size: 250% auto;
+    background-size: 233% auto;
     animation: alternateGradient 3s linear infinite;
 }
 
@@ -47,11 +47,8 @@ form {
     0% {
         background-position: 0% 0%;
     }
-    50% {
-        background-position: 100% 0%;
-    }
     100% {
-        background-position: 0% 0%;
+        background-position: 100% 0%;
     }
 }
 
