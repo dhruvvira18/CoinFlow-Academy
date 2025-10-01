@@ -70,3 +70,107 @@ a {
 a:hover {
     color: var(--tertiary-accent-color);
 }
+
+/* --- NAVIGATION BAR CUSTOM STYLING --- */
+
+/* Custom Navbar Background */
+.custom-navbar-bg {
+    background-color: var(--primary-background-color);
+}
+
+/* Custom Brand Text Color */
+.custom-brand-text {
+    color: var(--primary-accent-color);
+    font-weight: bold;
+    font-size: 1.30em;
+}
+
+/* Custom Logo Styling */
+.custom-logo {
+    height: 30px;
+    width: auto;
+}
+
+/* Custom Currency Link and Icon Styling */
+.custom-currency-link {
+    color: var(--tertiary-accent-color);
+    display: flex;
+    align-items: center;
+    padding: 10%;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-currency-link:hover {
+    color: var(--text-color);
+    background-color: var(--secondary-background-color);
+}
+
+.custom-currency-link .fa-solid {
+    font-size: 1.2em;
+}
+
+.custom-currency-link .currency-value {
+    font-size: 0.95em;
+    margin-left: 0.25rem;
+}
+
+/* Currency Tooltip for Hover Effect */
+.currency-tooltip {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the link */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background-color: var(--primary-background-color);
+    color: var(--text-color);
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    font-size: 0.8em;
+    z-index: 1000; /* Ensure it's above other content */
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-item:hover .currency-tooltip {
+    display: block;
+}
+
+.currency_icon {
+    height: 30px; 
+    width: 30px; 
+    object-fit: contain; 
+    display: inline-block; 
+}
+
+/* --- OFFCANVAS CUSTOM STYLING --- */
+
+/* Custom Background Color for Offcanvas */
+.custom-offcanvas-bg {
+    background-color: var(--secondary-background-color); 
+}
+
+/* Custom Text Color */
+.custom-offcanvas-bg,
+.custom-offcanvas-bg .offcanvas-title,
+.custom-offcanvas-bg .offcanvas-footer-text,
+.custom-offcanvas-bg .offcanvas-footer-text p {
+    color: var(--text-color);
+}
+
+/* Custom Color for Links */
+.custom-offcanvas-bg .nav-link.offcanvas-link {
+    color: var(--secondary-accent-color);
+    padding-left: 10px;
+    transition: background-color 0.2s;
+}
+
+/* Custom Color for Active/Hover Links */
+.custom-offcanvas-bg .nav-link.offcanvas-link:hover,
+.custom-offcanvas-bg .nav-link.offcanvas-link.active {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}

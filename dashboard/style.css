@@ -1,0 +1,5 @@
+@import url("../global_styles.css");
+
+body {
+    background-color: var(--secondary-background-color);
+}
