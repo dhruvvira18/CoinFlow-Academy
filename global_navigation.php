@@ -65,6 +65,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li class="nav-item mt-3 pt-3 border-top border-secondary">
                 <a class="nav-link offcanvas-link" href="">About Us</a>
             </li>
+            <li class="nav-item mt-3 pt-3 border-top border-secondary">
+                <a class="nav-link offcanvas-link" href="../account/logout_handler.php">Logout</a>
+            </li>
         </ul>
         <hr class="text-white-50">
         <div class="mt-4 offcanvas-footer-text">
