@@ -47,12 +47,12 @@ $button_text = $is_success ? 'Go to Dashboard' : 'Go Back';
 
     <div class="card custom-card border-0 rounded-3 p-4 p-md-5 text-center" style="max-width: 450px; width: 100%;">
         
-        <h1 class="h3 fw-bold mb-3 title-accent">
+        <h1 class="title-accent">
             <?php echo $title; ?>
         </h1>
         
         <div class="alert-custom rounded-3" role="alert">
-            <?php echo $message; ?>
+            <p><?php echo $message; ?></p>
         </div>
 
         <a href="<?php echo $redirect_link; ?>">

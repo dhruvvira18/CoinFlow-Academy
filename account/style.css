@@ -63,7 +63,8 @@ form {
     margin-bottom: 20px;
 }
 
-p {
+h6 {
     color: var(--text-color);
+    font-weight: bold;
     opacity: 0.8;
 }
