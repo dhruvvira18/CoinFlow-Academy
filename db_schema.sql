@@ -1,6 +1,6 @@
 -- -----------------------------------------------------
 -- Database: CoinFlow Academy - FINAL SCHEMA
--- This script MUST be run on a clean database to create all 11 tables.
+-- This script MUST be run on a clean database to create all 13 tables.
 -- -----------------------------------------------------
 CREATE DATABASE IF NOT EXISTS coinflow_academy_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE coinflow_academy_db;
@@ -44,7 +44,26 @@ CREATE TABLE IF NOT EXISTS Courses (
 );
 
 -- =======================================================
--- 4. USER_STATS: Stores user-specific scoring and currencies
+-- 4. COURSE_LESSONS: Content and structure for individual lessons
+-- =======================================================
+CREATE TABLE IF NOT EXISTS Course_Lessons (
+    lesson_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    course_id INT UNSIGNED NOT NULL,
+    lesson_index SMALLINT UNSIGNED NOT NULL COMMENT 'The sequential order of the lesson within the course (1, 2, 3...)',
+    lesson_title VARCHAR(150) NOT NULL,
+    lesson_content TEXT NOT NULL COMMENT 'The full HTML/Markdown content of the lesson',
+    estimated_time_minutes SMALLINT UNSIGNED DEFAULT 5,
+    -- REWARD COLUMNS 
+    star_points_reward INT UNSIGNED DEFAULT 100 COMMENT 'Star Points granted for completing this lesson',
+    skill_points_reward INT UNSIGNED DEFAULT 0 COMMENT 'Skill Points granted for completing this lesson (usually 0 unless final quiz)',
+    leaderboard_points_reward INT UNSIGNED DEFAULT 0 COMMENT 'Leaderboard Points granted for completing this lesson (usually 0 unless final quiz)',
+    UNIQUE KEY uc_course_index (course_id, lesson_index),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS idx_lesson_course ON Course_Lessons (course_id);
+
+-- =======================================================
+-- 5. USER_STATS: Stores user-specific scoring and currencies
 -- =======================================================
 CREATE TABLE IF NOT EXISTS User_Stats (
     user_id INT UNSIGNED PRIMARY KEY,
@@ -56,14 +75,14 @@ CREATE TABLE IF NOT EXISTS User_Stats (
 );
 
 -- =======================================================
--- 5. USER_COURSE_PROGRESS: Tracks individual user progress on each course
+-- 6. USER_COURSE_PROGRESS: Tracks individual user progress on each course
 -- =======================================================
 CREATE TABLE IF NOT EXISTS User_Course_Progress (
     user_progress_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
     course_id INT UNSIGNED NOT NULL,
     status ENUM('Locked', 'Unlocked', 'InProgress', 'Completed') NOT NULL,
-    last_lesson_completed SMALLINT UNSIGNED DEFAULT 0 COMMENT 'The index of the last lesson completed (0-10)',
+    last_lesson_completed INT UNSIGNED NULL COMMENT 'The lesson_id of the last lesson completed (used for navigation/resumption)',
     progress_percentage TINYINT UNSIGNED DEFAULT 0,
     completed_at TIMESTAMP NULL,
     UNIQUE KEY uc_user_course (user_id, course_id),
@@ -74,7 +93,22 @@ CREATE TABLE IF NOT EXISTS User_Course_Progress (
 CREATE INDEX IF NOT EXISTS idx_progress_status ON User_Course_Progress (user_id, status);
 
 -- =======================================================
--- 6. BADGES and 7. USER_BADGES
+-- 7. USER_LESSON_COMPLETION: Tracks the completion of specific lessons
+-- This is essential for calculating accurate progress and ensuring one-time rewards.
+-- =======================================================
+CREATE TABLE IF NOT EXISTS User_Lesson_Completion (
+    user_lesson_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    lesson_id INT UNSIGNED NOT NULL,
+    date_completed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uc_user_lesson (user_id, lesson_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (lesson_id) REFERENCES Course_Lessons(lesson_id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS idx_lesson_completed ON User_Lesson_Completion (lesson_id);
+
+-- =======================================================
+-- 8. BADGES and 9. USER_BADGES
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Badges (
     badge_id INT UNSIGNED PRIMARY KEY,
@@ -94,7 +128,7 @@ CREATE TABLE IF NOT EXISTS User_Badges (
 );
 
 -- =======================================================
--- 8. COSMETICS and 9. USER_COSMETICS
+-- 10. COSMETICS and 11. USER_COSMETICS
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Cosmetics (
     cosmetic_id INT UNSIGNED PRIMARY KEY,
@@ -116,7 +150,7 @@ CREATE TABLE IF NOT EXISTS User_Cosmetics (
 );
 
 -- =======================================================
--- 10. MARKETPLACE_SETS and 11. DAILY_MARKET_ROTATION
+-- 12. MARKETPLACE_SETS and 13. DAILY_MARKET_ROTATION
 -- -----------------------------------------------------
 -- Logic for rotating items in the marketplace
 -- =======================================================
