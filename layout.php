@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <?php require '../global_navigation.php'; ?>
+    <?php require_once '../global_navigation.php'; ?>
 
     <main>
         <?php echo $pageContent; ?>
