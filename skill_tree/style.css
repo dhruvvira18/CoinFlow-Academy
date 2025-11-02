@@ -1,5 +1,119 @@
 @import url("../global_styles.css");
 
+/* --- Overrides for Button Classes --- */
+/* InProgress / Unlock */
+.vault-card .btn-primary,
+.vault-card .btn-warning,
+.vault-details-button.btn-primary,
+.vault-details-button.btn-warning {
+    background-color: var(--quaternary-accent-color) !important;
+    border-color: var(--primary-accent-color) !important;
+    color: var(--primary-background-color) !important;
+    font-weight: bold;
+}
+
+/* Completed */
+.vault-card .btn-success,
+.vault-details-button.btn-success {
+    background-color: var(--primary-accent-color) !important;
+    border-color: var(--primary-accent-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Cannot Afford */
+.vault-card .btn-danger,
+.vault-details-button.btn-danger {
+    background-color: var(--secondary-accent-color) !important;
+    border-color: var(--secondary-accent-color) !important;
+    color: var(--text-color) !important;
+}
+
 body {
     background-color: var(--secondary-background-color);
+}
+
+/* Specific Skill Tree Styling */
+.skill-tree-header {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.5);
+    border-radius: 5px;
+}
+
+.skill-tree-container {
+    padding-top: 20px;
+}
+.vault-tier-header {
+    font-size: 2rem;
+    color: var(--tertiary-accent-color);
+    border-bottom: 2px solid var(--secondary-accent-color);
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.vault-card-col {
+    margin-bottom: 20px;
+}
+.vault-card {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-accent-color);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.vault-card-title {
+    color: var(--quaternary-accent-color);
+}
+.vault-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+.vault-card-button {
+    width: 100%;
+    margin-top: auto; /* Push button to bottom */
+    font-family: var(--font-family);
+}
+.vault-details-card {
+    position: sticky;
+    top: 10vh;
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.5);
+    height: 85vh;
+    overflow-y: auto;
+}
+.vault-details-title {
+    color: var(--tertiary-accent-color);
+    font-size: 2rem;
+    border-bottom: 1px dashed var(--quaternary-accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.vault-details-cost, .vault-details-progress, .vault-details-text {
+    margin-top: 15px;
+}
+
+.vault-img {
+    max-height: 30vh;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Status Styling */
+.vault-completed {
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 10px var(--primary-accent-color);
+}
+.vault-progress {
+    border-color: var(--quaternary-accent-color);
+    box-shadow: 0 0 10px var(--quaternary-accent-color);
+}
+.vault-cannot-afford {
+        border-color: #a83232;
 }
