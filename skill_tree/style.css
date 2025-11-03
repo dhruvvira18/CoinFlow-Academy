@@ -117,3 +117,12 @@ body {
 .vault-cannot-afford {
         border-color: #a83232;
 }
+
+/* Progress Bar Styling */
+.progress-bar.bg-success {
+    background-color: var(--primary-accent-color) !important;
+}
+
+.progress-bar.bg-primary {
+    background-color: var(--quaternary-accent-color) !important;
+}

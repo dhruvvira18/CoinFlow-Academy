@@ -107,7 +107,11 @@ function get_vault_status($course, $progress, $tiers, $user_skill_points) {
         case 'InProgress':
             $data['button_text'] = "Continue Journey ({$progress_percent}%)";
             $data['button_class'] = 'btn-primary vault-start-btn';
-            $data['img_path'] = '../images/vault_filled.png';
+            if ($progress_percent < 9) {
+                $data['img_path'] = '../images/vault_unlocked.png';
+            } else {
+                $data['img_path'] = '../images/vault_filled.png';
+            }
             $data['extra_class'] = 'vault-progress';
             $data['link'] = "../lessons/view_lesson.php?course_id={$course_id}";
             return $data;
@@ -130,7 +134,7 @@ function get_vault_status($course, $progress, $tiers, $user_skill_points) {
                 $data['extra_class'] = 'vault-cannot-afford';
             }
 
-            $data['img_path'] = '../images/vault_unlocked.png';
+            $data['img_path'] = '../images/vault_locked.png';
             $data['link'] = '#';
             return $data;
             
