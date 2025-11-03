@@ -1,6 +1,6 @@
 -- -----------------------------------------------------
 -- Database: CoinFlow Academy - FINAL SCHEMA
--- This script MUST be run on a clean database to create all 14 tables.
+-- This script MUST be run on a clean database to create all 15 tables.
 -- -----------------------------------------------------
 CREATE DATABASE IF NOT EXISTS coinflow_academy_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE coinflow_academy_db;
@@ -19,7 +19,6 @@ CREATE INDEX IF NOT EXISTS idx_user_username ON Users (username);
 
 -- =======================================================
 -- 2. COURSE_TIERS: Defines the tiered structure logic
--- Must be created before Courses
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Course_Tiers (
     tier_id INT UNSIGNED PRIMARY KEY COMMENT 'The tier number (1, 2, 3, 4)',
@@ -131,9 +130,9 @@ CREATE TABLE IF NOT EXISTS User_Premium_Badges (
 );
 
 -- =======================================================
--- 10. STANDARD_COSMETICS: Purchasable Items (Avatar, Frame, Standard Badge)
+-- 10. WEEKLY_COSMETICS: Items only available stand-alone/weekly
 -- =======================================================
-CREATE TABLE IF NOT EXISTS Standard_Cosmetics (
+CREATE TABLE IF NOT EXISTS Weekly_Cosmetics (
     cosmetic_id INT UNSIGNED PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     type ENUM('Avatar', 'Frame', 'Badge') NOT NULL, 
@@ -142,59 +141,82 @@ CREATE TABLE IF NOT EXISTS Standard_Cosmetics (
 );
 
 -- =======================================================
--- 11. USER_COSMETICS: Tracks purchasable items a user owns
+-- 11. BUNDLE_COSMETICS: Items only available in bundles
 -- =======================================================
-CREATE TABLE IF NOT EXISTS User_Cosmetics (
+CREATE TABLE IF NOT EXISTS Bundle_Cosmetics (
+    cosmetic_id INT UNSIGNED PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    type ENUM('Avatar', 'Frame', 'Badge') NOT NULL, 
+    -- NOTE: cost_star_points is included for 'Total Value' calculation in the bundle, 
+    -- but is NOT used for individual purchase.
+    cost_star_points INT UNSIGNED NOT NULL, 
+    image_url VARCHAR(255)
+);
+
+-- =======================================================
+-- 12. USER_WEEKLY_COSMETICS: Tracks owned weekly items
+-- =======================================================
+CREATE TABLE IF NOT EXISTS User_Weekly_Cosmetics (
     user_cosmetic_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
-    cosmetic_id INT UNSIGNED NOT NULL,
+    cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Weekly_Cosmetics.cosmetic_id',
     date_acquired TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_equipped BOOLEAN DEFAULT FALSE,
     UNIQUE KEY uc_user_cosmetic (user_id, cosmetic_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (cosmetic_id) REFERENCES Standard_Cosmetics(cosmetic_id) ON DELETE RESTRICT
+    FOREIGN KEY (cosmetic_id) REFERENCES Weekly_Cosmetics(cosmetic_id) ON DELETE RESTRICT
 );
 
 -- =======================================================
--- 12. FEATURED_BUNDLES
--- -----------------------------------------------------
--- Logic for time-limited, themed bundles
+-- 13. USER_BUNDLE_COSMETICS: Tracks owned bundle items
+-- =======================================================
+CREATE TABLE IF NOT EXISTS User_Bundle_Cosmetics (
+    user_cosmetic_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Bundle_Cosmetics.cosmetic_id',
+    date_acquired TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_equipped BOOLEAN DEFAULT FALSE,
+    UNIQUE KEY uc_user_cosmetic (user_id, cosmetic_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (cosmetic_id) REFERENCES Bundle_Cosmetics(cosmetic_id) ON DELETE RESTRICT
+);
+
+
+-- =======================================================
+-- 14. FEATURED_BUNDLES
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Featured_Bundles (
     set_id INT UNSIGNED PRIMARY KEY,
     set_name VARCHAR(100) NOT NULL UNIQUE,
     description TEXT,
-    bundle_cost_sp INT UNSIGNED NOT NULL COMMENT 'The cost for the entire bundle in Star Points',
-    start_date DATETIME NOT NULL COMMENT 'When the bundle deal starts',
-    end_date DATETIME NOT NULL COMMENT 'When the bundle deal ends'
+    bundle_cost_sp INT UNSIGNED NOT NULL,
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL
 );
 
 -- =======================================================
--- 13. BUNDLE_ITEMS: Items contained in a Featured_Bundle
+-- 15. BUNDLE_ITEMS: Links Featured_Bundles to Bundle_Cosmetics
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Bundle_Items (
     set_item_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     set_id INT UNSIGNED NOT NULL,
-    cosmetic_id INT UNSIGNED NOT NULL,
+    cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Bundle_Cosmetics.cosmetic_id',
     UNIQUE KEY uc_set_cosmetic (set_id, cosmetic_id),
     FOREIGN KEY (set_id) REFERENCES Featured_Bundles(set_id) ON DELETE CASCADE,
-    FOREIGN KEY (cosmetic_id) REFERENCES Standard_Cosmetics(cosmetic_id) ON DELETE RESTRICT
+    FOREIGN KEY (cosmetic_id) REFERENCES Bundle_Cosmetics(cosmetic_id) ON DELETE RESTRICT
 );
 
 -- =======================================================
--- 14. WEEKLY_DEALS
--- -----------------------------------------------------
--- Tracks the three individual cosmetics featured for the current week
+-- 16. WEEKLY_DEALS: Links to Weekly_Cosmetics
 -- =======================================================
 CREATE TABLE IF NOT EXISTS Weekly_Deals (
-    rotation_week_start DATE PRIMARY KEY COMMENT 'The start date (e.g., Monday) of the active week',
+    rotation_week_start DATE PRIMARY KEY,
     
-    -- IDs link directly to the Standard_Cosmetics table
-    avatar_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'Cosmetic ID for the featured Avatar',
-    frame_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'Cosmetic ID for the featured Frame',
-    badge_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'Cosmetic ID for the featured Badge (Standard, purchasable type)',
+    avatar_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Weekly_Cosmetics.cosmetic_id',
+    frame_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Weekly_Cosmetics.cosmetic_id',
+    badge_cosmetic_id INT UNSIGNED NOT NULL COMMENT 'References Weekly_Cosmetics.cosmetic_id',
     
-    FOREIGN KEY (avatar_cosmetic_id) REFERENCES Standard_Cosmetics(cosmetic_id) ON DELETE RESTRICT,
-    FOREIGN KEY (frame_cosmetic_id) REFERENCES Standard_Cosmetics(cosmetic_id) ON DELETE RESTRICT,
-    FOREIGN KEY (badge_cosmetic_id) REFERENCES Standard_Cosmetics(cosmetic_id) ON DELETE RESTRICT
+    FOREIGN KEY (avatar_cosmetic_id) REFERENCES Weekly_Cosmetics(cosmetic_id) ON DELETE RESTRICT,
+    FOREIGN KEY (frame_cosmetic_id) REFERENCES Weekly_Cosmetics(cosmetic_id) ON DELETE RESTRICT,
+    FOREIGN KEY (badge_cosmetic_id) REFERENCES Weekly_Cosmetics(cosmetic_id) ON DELETE RESTRICT
 );
