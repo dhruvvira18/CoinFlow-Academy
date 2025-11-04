@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $current_user_id = $_SESSION['user_id'];
-
+$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 // --- FETCH LEADERBOARD DATA ---
 $query = "
     SELECT 
