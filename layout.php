@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
     <?php require_once '../global_navigation.php'; ?>
 
     <main>

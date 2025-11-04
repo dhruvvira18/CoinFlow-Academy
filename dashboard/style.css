@@ -2,4 +2,21 @@
 
 body {
     background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.text-accent {
+    color: var(--tertiary-accent-color);
+}
+
+.card {
+    background-color: var(--secondary-background-color);
+    border: 2px solid var(--primary-accent-color);
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }

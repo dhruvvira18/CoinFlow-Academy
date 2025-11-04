@@ -1,0 +1,52 @@
+@import url("../global_styles.css");
+
+body {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.leaderboard-title {
+    color: var(--tertiary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(250, 151, 130, 0.6);
+}
+
+.leaderboard-container {
+    padding-bottom: 60px;
+}
+
+.leaderboard-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.leaderboard-table th {
+    color: var(--secondary-accent-color);
+    border-bottom: 2px solid var(--primary-accent-color);
+    font-size: 1.2rem;
+}
+
+.leaderboard-table td {
+    background-color: var(--secondary-background-color);
+    border: 1px solid var(--primary-accent-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.leaderboard-table tr:hover td {
+    background-color: rgba(250, 151, 130, 0.1);
+}
+
+.current-user td {
+    background-color: rgba(184, 77, 58, 0.3);
+    border: 2px solid var(--tertiary-accent-color);
+    box-shadow: 0 0 10px rgba(250, 151, 130, 0.4);
+    font-weight: bold;
+}
+
+.rank-highlight {
+    color: var(--tertiary-accent-color);
+    font-weight: bold;
+}
