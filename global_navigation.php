@@ -52,10 +52,12 @@ require_once 'setup.php';
                 <?php echo ($current_page === 'skill_tree.php') ? 'aria-current="page"' : ''; ?> href="../skill_tree/skill_tree.php">Skill Tree</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link" href="">Feature 02</a>
+                <a class="nav-link offcanvas-link<?php echo ($current_page === 'marketplace.php') ? ' active' : ''; ?>"
+                <?php echo ($current_page === 'marketplace.php') ? 'aria-current="page"' : ''; ?> href="">Marketplace</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link offcanvas-link" href="">Feature 03</a>
+                <a class="nav-link offcanvas-link<?php echo ($current_page === 'leaderboard.php') ? ' active' : ''; ?>"
+                <?php echo ($current_page === 'leaderboard.php') ? 'aria-current="page"' : ''; ?> class="nav-link offcanvas-link" href="">Leaderboard</a>
             </li>
             <li class="nav-item mt-3 pt-3 border-top border-secondary">
                 <a class="nav-link offcanvas-link" href="">About Us</a>
