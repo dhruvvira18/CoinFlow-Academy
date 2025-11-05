@@ -1,0 +1,71 @@
+@import url("../global_styles.css");
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Roadmap Lesson Card */
+.checkpoint {
+    background-color: var(--secondary-background-color);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Glow animation for unlocked/current lessons */
+.checkpoint.current:hover {
+    box-shadow: 0 0 15px var(--tertiary-accent-color);
+    transform: scale(1.02);
+}
+
+/* Completed lessons glow green subtly */
+.checkpoint.completed:hover {
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.5);
+    transform: scale(1.02);
+}
+
+/* Lesson title text */
+.checkpoint .title {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--tertiary-accent-color);
+    color: var(--primary-accent-color);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-accent-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button hover glow */
+.btn:hover {
+    background-color: var(--quaternary-accent-color);
+    box-shadow: 0 0 10px var(--quaternary-accent-color);
+    transform: translateY(-2px);
+}
+
+/* Locked and progress visuals */
+.checkpoint.locked {
+    opacity: 0.55;
+    pointer-events: none;
+    filter: grayscale(40%);
+}
+
+.checkpoint.completed {
+    border-color: var(--primary-accent-color);
+}
+
+.checkpoint.current {
+    border-color: var(--quaternary-accent-color);
+}

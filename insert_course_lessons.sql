@@ -369,7 +369,7 @@ VALUES
 'Number of friends',
 'Type of phone used',
 'Monthly subscriptions',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,2,'Lesson 2: Building Credit',
 'Definition: Building credit means establishing a positive credit history by demonstrating responsible borrowing and repayment.',
@@ -380,7 +380,7 @@ VALUES
 'Closing old accounts frequently',
 'Ignoring bills',
 'Using full credit limit every time',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,3,'Lesson 3: Credit Reports',
 'Definition: A credit report is a detailed record of your borrowing and repayment history maintained by credit bureaus.',
@@ -391,7 +391,7 @@ VALUES
 'To increase your score automatically',
 'To spend more money',
 'To delete old accounts',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,4,'Lesson 4: Improving Scores',
 'Definition: Improving your credit score involves adopting habits that positively impact your credit profile.',
@@ -402,7 +402,7 @@ VALUES
 'Paying bills early and reducing debt',
 'Opening many new accounts at once',
 'Maxing out credit cards',
-'B',1000,500,10000),
+'B',1000,750,10000),
 
 (4,5,'Lesson 5: Common Mistakes',
 'Definition: Common credit mistakes include late payments, maxing out cards, closing old accounts, and frequent loan applications.',
@@ -413,7 +413,7 @@ VALUES
 'Checking your score',
 'Paying your bills',
 'Using less than 30% of credit',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,6,'Lesson 6: Handling Disputes',
 'Definition: Disputing errors means contacting credit bureaus to correct inaccurate or outdated information on your report.',
@@ -424,7 +424,7 @@ VALUES
 'Ignore it',
 'Delete your report',
 'Take a new loan immediately',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,7,'Lesson 7: Responsible Borrowing',
 'Definition: Responsible borrowing means taking only as much debt as you can repay comfortably within your income.',
@@ -435,7 +435,7 @@ VALUES
 'Borrowing as much as possible',
 'Ignoring due dates',
 'Applying for many cards',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,8,'Lesson 8: Long-Term Habits',
 'Definition: Long-term credit habits are sustainable financial behaviors that maintain strong credit over time.',
@@ -446,7 +446,7 @@ VALUES
 'Frequently closing old cards',
 'Using all available credit',
 'Ignoring lender emails',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,9,'Lesson 9: Credit Myths',
 'Definition: Credit myths are false beliefs that mislead people about how credit actually works.',
@@ -457,7 +457,7 @@ VALUES
 'Paying bills on time helps your score',
 'Low utilization boosts your score',
 'Old accounts help credit age',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (4,10,'Final Quiz: Credit Score Catalyst — 5 Questions',
 'Q1. What is a credit score used for?
@@ -472,7 +472,7 @@ Q5. Which of the following is a credit myth?',
  Q4 options: A) Below 30%  B) Above 80%  C) 100%  D) 50%
  Q5 options: A) Checking your score lowers it  B) Paying bills on time helps  C) Keeping low balance helps  D) Reviewing reports helps',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:B;Q2:B;Q3:A;Q4:A;Q5:A',1000,500,10000);
+'Q1:B;Q2:B;Q3:A;Q4:A;Q5:A',1000,750,10000);
 
 -- =======================================================
 -- COURSE 5: Investment Launchpad (Tier 2 — Maven)
@@ -492,7 +492,7 @@ VALUES
 'To spend money quickly',
 'To avoid all risks completely',
 'To keep cash unused',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,2,'Lesson 2: Risk vs Return',
 'Definition: Risk refers to the chance of losing money, while return is the profit earned from an investment.',
@@ -503,7 +503,7 @@ VALUES
 'Government savings bonds',
 'Fixed deposits',
 'Savings account',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,3,'Lesson 3: Compounding Power',
 'Definition: Compounding is the process where earnings on an investment generate additional earnings over time.',
@@ -514,7 +514,7 @@ VALUES
 'Withdrawing profits frequently',
 'Investing for short periods only',
 'Ignoring interest accumulation',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,4,'Lesson 4: Asset Classes',
 'Definition: Asset classes are categories of investments with similar characteristics, such as stocks, bonds, real estate, and commodities.',
@@ -525,7 +525,7 @@ VALUES
 'Stocks',
 'Bonds',
 'Real estate',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,5,'Lesson 5: Diversification',
 'Definition: Diversification is the strategy of spreading investments across multiple assets to reduce risk.',
@@ -536,7 +536,7 @@ VALUES
 'It guarantees profits',
 'It eliminates all losses',
 'It increases risk',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,6,'Lesson 6: Long-Term Mindset',
 'Definition: A long-term mindset means focusing on consistent growth over years instead of chasing quick profits.',
@@ -547,7 +547,7 @@ VALUES
 'Reacting to every price drop',
 'Selling during panic',
 'Checking prices hourly',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,7,'Lesson 7: Investment Vehicles',
 'Definition: Investment vehicles are instruments that allow you to invest, such as mutual funds, ETFs, and index funds.',
@@ -558,7 +558,7 @@ VALUES
 'A savings account',
 'A government tax',
 'A type of insurance',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,8,'Lesson 8: Common Mistakes',
 'Definition: Common investing mistakes include emotional trading, lack of research, and poor diversification.',
@@ -569,7 +569,7 @@ VALUES
 'Staying diversified',
 'Researching before investing',
 'Investing regularly',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,9,'Lesson 9: Setting Goals',
 'Definition: Investment goals are financial targets that define why and how long you invest.',
@@ -580,7 +580,7 @@ VALUES
 'They reduce returns',
 'They increase risk',
 'They eliminate planning needs',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (5,10,'Final Quiz: Investment Launchpad — 5 Questions',
 'Q1. What does diversification help with?
@@ -595,7 +595,7 @@ Q5. Which action is a common investing mistake?',
  Q4 options: A) Tools to invest collectively  B) Insurance plans  C) Tax refunds  D) Loans
  Q5 options: A) Emotional investing  B) Research  C) Goal setting  D) Patience',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:B;Q2:B;Q3:B;Q4:A;Q5:A',1000,500,10000);
+'Q1:B;Q2:B;Q3:B;Q4:A;Q5:A',1000,750,10000);
 
 -- =======================================================
 -- COURSE 6: Tax Taming Basics (Tier 2 — Maven)
@@ -615,7 +615,7 @@ VALUES
 'To reduce savings of citizens',
 'To promote black markets',
 'To increase inflation',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,2,'Lesson 2: Types of Taxes',
 'Definition: Taxes are classified into direct and indirect types. Direct taxes are paid directly to the government, while indirect taxes are collected through goods and services.',
@@ -626,7 +626,7 @@ VALUES
 'GST',
 'Customs Duty',
 'Value Added Tax',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,3,'Lesson 3: Filing Basics',
 'Definition: Filing taxes means submitting your income details to the government to calculate how much you owe or get refunded.',
@@ -637,7 +637,7 @@ VALUES
 'Salary Slip',
 'Bank Passbook',
 'Loan Agreement',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,4,'Lesson 4: Deductions and Credits',
 'Definition: Deductions and credits reduce your taxable income or directly lower your tax payable amount.',
@@ -648,7 +648,7 @@ VALUES
 'Both reduce taxable income',
 'Credits increase tax',
 'Deductions increase tax',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,5,'Lesson 5: Retirement Accounts',
 'Definition: Retirement accounts are savings tools with tax benefits to encourage long-term investing for old age.',
@@ -659,7 +659,7 @@ VALUES
 'Immediate spending freedom',
 'Higher tax payments',
 'No future returns',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,6,'Lesson 6: Tax Planning',
 'Definition: Tax planning involves organizing finances to maximize deductions and minimize tax liability legally.',
@@ -670,7 +670,7 @@ VALUES
 'To avoid filing taxes',
 'To hide income from authorities',
 'To pay maximum possible tax',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,7,'Lesson 7: Avoiding Errors',
 'Definition: Tax errors occur when incorrect information is filed or deadlines are missed, leading to penalties or audits.',
@@ -681,7 +681,7 @@ VALUES
 'Filing on time',
 'Paying taxes early',
 'Claiming eligible deductions',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,8,'Lesson 8: Professional Help',
 'Definition: Tax professionals assist individuals and companies in accurate filing and tax-saving strategies.',
@@ -692,7 +692,7 @@ VALUES
 'When you want to avoid saving taxes',
 'When your income is zero',
 'Never',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,9,'Lesson 9: Staying Organized',
 'Definition: Staying organized means keeping all financial documents, receipts, and investment proofs handy for accurate filing.',
@@ -703,7 +703,7 @@ VALUES
 'To make taxes more complex',
 'To reduce income',
 'To hide investments',
-'A',1000,500,10000),
+'A',1000,750,10000),
 
 (6,10,'Final Quiz: Tax Taming Basics — 5 Questions',
 'Q1. What is the main goal of taxes?
@@ -718,7 +718,7 @@ Q5. Why keep tax documents organized?',
  Q4 options: A) Legal way to reduce tax  B) Evading tax  C) Spending more  D) Filing late
  Q5 options: A) To simplify returns and handle audits  B) To hide details  C) To pay extra  D) To confuse the system',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1000,500,10000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1000,750,10000);
 
 -- =======================================================
 -- COURSE 7: Portfolio Architect (Tier 3 — Mogul Tier)
@@ -738,7 +738,7 @@ VALUES
 'Minimize all risk entirely',
 'Focus on a single asset',
 'Ignore diversification',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,2,'Lesson 2: Asset Allocation',
 'Definition: Asset allocation is the process of dividing your investments among different asset classes such as stocks, bonds, and cash.',
@@ -749,7 +749,7 @@ VALUES
 'It guarantees profits',
 'It focuses only on savings',
 'It eliminates inflation',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,3,'Lesson 3: Passive vs Active Investing',
 'Definition: Passive investing involves tracking a market index, while active investing seeks to outperform the market through frequent trades.',
@@ -760,7 +760,7 @@ VALUES
 'Passive Investor',
 'Both equally',
 'Neither',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,4,'Lesson 4: Rebalancing Portfolios',
 'Definition: Rebalancing is the act of realigning the weight of a portfolio by periodically buying or selling assets to maintain the target allocation.',
@@ -771,7 +771,7 @@ VALUES
 'Maximum number of stocks',
 'High short-term returns',
 'Zero market exposure',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,5,'Lesson 5: ETFs vs Mutual Funds',
 'Definition: ETFs (Exchange-Traded Funds) and Mutual Funds both pool investors’ money, but ETFs trade like stocks while mutual funds are priced at day-end.',
@@ -782,7 +782,7 @@ VALUES
 'ETFs are priced only at day-end',
 'ETFs require high minimum investment',
 'Mutual funds trade instantly like ETFs',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,6,'Lesson 6: Measuring Returns',
 'Definition: Measuring returns involves evaluating how much profit or loss an investment generates over a specific period.',
@@ -793,7 +793,7 @@ VALUES
 'Company reputation',
 'Total market size',
 'Government tax rates',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,7,'Lesson 7: Behavioral Biases',
 'Definition: Behavioral biases are emotional or psychological tendencies that cause investors to make irrational financial decisions.',
@@ -804,7 +804,7 @@ VALUES
 'Liquidity',
 'Inflation',
 'Regulation',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,8,'Lesson 8: Risk Management',
 'Definition: Risk management involves identifying, assessing, and mitigating investment risks.',
@@ -815,7 +815,7 @@ VALUES
 'To avoid investing entirely',
 'To maximize spending',
 'To increase taxes',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,9,'Lesson 9: Long-Term Planning',
 'Definition: Long-term planning focuses on building wealth gradually by setting realistic goals and sticking to disciplined investing.',
@@ -826,7 +826,7 @@ VALUES
 'It guarantees daily profits',
 'It prevents inflation',
 'It avoids taxes completely',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (7,10,'Final Quiz: Portfolio Architect — 5 Questions',
 'Q1. What does Modern Portfolio Theory promote?
@@ -841,7 +841,7 @@ Q5. Why is long-term planning important?',
  Q4 options: A) Emotional mistakes in investing  B) Legal contracts  C) Tax deductions  D) Market indicators
  Q5 options: A) It uses compounding to grow wealth  B) It avoids saving  C) It shortens time horizon  D) It ensures daily profit',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,750,15000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,1500,15000);
 
 -- =======================================================
 -- COURSE 8: Real Estate Reality (Tier 3 — Mogul Tier)
@@ -861,7 +861,7 @@ VALUES
 'Company ownership shares',
 'Digital currency',
 'Bank deposits',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,2,'Lesson 2: Mortgages 101',
 'Definition: A mortgage is a loan used to purchase property, where the property itself serves as collateral.',
@@ -872,7 +872,7 @@ VALUES
 'The borrower gains more credit',
 'Nothing happens',
 'The interest rate decreases',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,3,'Lesson 3: Home Ownership Costs',
 'Definition: Home ownership involves not just buying property but also paying for ongoing expenses like taxes, insurance, and maintenance.',
@@ -883,7 +883,7 @@ VALUES
 'Property taxes',
 'Home insurance',
 'Maintenance fees',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,4,'Lesson 4: Buying vs Renting',
 'Definition: Buying gives ownership and potential asset growth, while renting offers flexibility but no equity gain.',
@@ -894,7 +894,7 @@ VALUES
 'Paying less tax always',
 'Guaranteed profit',
 'No maintenance needed',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,5,'Lesson 5: Rental Properties',
 'Definition: Rental properties are real estate assets that generate income through tenant payments.',
@@ -905,7 +905,7 @@ VALUES
 'Tax refunds',
 'Appreciation only',
 'Interest from banks',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,6,'Lesson 6: Real Estate as Investment',
 'Definition: Real estate investments can provide rental income, tax benefits, and appreciation over time.',
@@ -916,7 +916,7 @@ VALUES
 'No risk at all',
 'Immediate liquidity',
 'Guaranteed tax exemption',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,7,'Lesson 7: Market Analysis',
 'Definition: Real estate market analysis involves studying demand, supply, location trends, and pricing to identify investment opportunities.',
@@ -927,7 +927,7 @@ VALUES
 'Avoid paying taxes',
 'Predict lottery numbers',
 'Ignore property trends',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,8,'Lesson 8: Financing Strategies',
 'Definition: Financing strategies are methods of obtaining funds for property purchases, including loans, partnerships, or leveraging existing assets.',
@@ -938,7 +938,7 @@ VALUES
 'Selling properties for cash',
 'Ignoring debt completely',
 'Paying only with savings',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,9,'Lesson 9: Risk and Diversification',
 'Definition: Diversification in real estate means spreading investments across property types or locations to reduce risk.',
@@ -949,7 +949,7 @@ VALUES
 'It increases taxes',
 'It guarantees profits',
 'It limits property options',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (8,10,'Final Quiz: Real Estate Reality — 5 Questions',
 'Q1. What is a mortgage?
@@ -964,7 +964,7 @@ Q5. What does leverage mean in real estate?',
  Q4 options: A) Taxes, insurance, and maintenance  B) Food and travel  C) Only loan interest  D) Nothing
  Q5 options: A) Using borrowed funds to invest  B) Selling property for cash  C) Ignoring expenses  D) Paying with coins only',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,750,15000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,1500,15000);
 
 -- =======================================================
 -- COURSE 9: Future-Proofing Finance (Tier 3 — Mogul Tier)
@@ -984,7 +984,7 @@ VALUES
 'To avoid taxes',
 'To guarantee profit',
 'To increase spending',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,2,'Lesson 2: Life & Disability Coverage',
 'Definition: Life insurance provides a payout to beneficiaries upon death, while disability insurance replaces lost income during incapacity.',
@@ -995,7 +995,7 @@ VALUES
 'It covers medical expenses only',
 'It replaces loans automatically',
 'It prevents property tax',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,3,'Lesson 3: Estate Planning Basics',
 'Definition: Estate planning involves arranging for the management and disposal of one’s assets after death.',
@@ -1006,7 +1006,7 @@ VALUES
 'Paying monthly bills',
 'Taking a loan',
 'Buying insurance only',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,4,'Lesson 4: Retirement Planning',
 'Definition: Retirement planning means preparing financially for life after active employment.',
@@ -1017,7 +1017,7 @@ VALUES
 'Spending all savings quickly',
 'Avoiding taxes entirely',
 'Depending on luck',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,5,'Lesson 5: Tax-Efficient Investing',
 'Definition: Tax-efficient investing means structuring investments to minimize taxes on returns.',
@@ -1028,7 +1028,7 @@ VALUES
 'Trading daily',
 'Ignoring holding periods',
 'Avoiding diversification',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,6,'Lesson 6: Succession Planning',
 'Definition: Succession planning ensures business or family wealth transitions smoothly to the next generation.',
@@ -1039,7 +1039,7 @@ VALUES
 'Selling all assets quickly',
 'Investing in crypto only',
 'Avoiding documentation',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,7,'Lesson 7: Health Planning',
 'Definition: Health planning involves preparing for medical costs through insurance, savings, and preventive care.',
@@ -1050,7 +1050,7 @@ VALUES
 'Property tax',
 'Credit card use',
 'Ignoring symptoms',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,8,'Lesson 8: Risk Mitigation',
 'Definition: Risk mitigation means identifying, assessing, and reducing potential financial threats.',
@@ -1061,7 +1061,7 @@ VALUES
 'Eliminating all risks forever',
 'Increasing risk exposure',
 'Avoiding savings',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,9,'Lesson 9: Building Financial Legacy',
 'Definition: A financial legacy is the wealth and values passed on to future generations.',
@@ -1072,7 +1072,7 @@ VALUES
 'Short-term loans',
 'Daily expense tracking only',
 'Tax evasion tactics',
-'A',1500,750,15000),
+'A',1500,1500,15000),
 
 (9,10,'Final Quiz: Future-Proofing Finance — 5 Questions',
 'Q1. What does insurance primarily do?
@@ -1087,7 +1087,7 @@ VALUES
  Q4 options: A) Use tax-advantaged accounts  B) Trade daily  C) Ignore capital gains  D) Spend all income
  Q5 options: A) Passing wealth and wisdom  B) Avoiding heirs  C) Short-term profits  D) Quick spending',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,750,15000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',1500,1500,15000);
 
 -- =======================================================
 -- COURSE 10: Global Markets Gauntlet (Tier 4 — Grandmaster Tier)
@@ -1107,7 +1107,7 @@ VALUES
 'Markets limited to one country',
 'Government-only economic plans',
 'Cryptocurrency exchanges only',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,2,'Lesson 2: Currency Exchange Basics',
 'Definition: Currency exchange is the process of converting one nation’s money into another’s for global trade and investment.',
@@ -1118,7 +1118,7 @@ VALUES
 'Weather and geography',
 'Population size',
 'Tax filing systems',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,3,'Lesson 3: Inflation & Interest Rates',
 'Definition: Inflation is the general rise in prices, while interest rates determine the cost of borrowing money.',
@@ -1129,7 +1129,7 @@ VALUES
 'Decrease lending restrictions',
 'Print more money',
 'Encourage borrowing',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,4,'Lesson 4: Central Banks Role',
 'Definition: A central bank manages a nation’s money supply, interest rates, and financial stability.',
@@ -1140,7 +1140,7 @@ VALUES
 'Setting retail prices',
 'Collecting property taxes',
 'Approving personal loans',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,5,'Lesson 5: Global ETFs',
 'Definition: Global ETFs (Exchange-Traded Funds) allow investors to buy shares of international markets in one portfolio.',
@@ -1151,7 +1151,7 @@ VALUES
 'To eliminate all risk',
 'To avoid trading entirely',
 'To focus on one country only',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,6,'Lesson 6: Economic Indicators',
 'Definition: Economic indicators are data points that show the health of an economy, such as GDP, CPI, and unemployment rate.',
@@ -1162,7 +1162,7 @@ VALUES
 'Retail product warranty',
 'School attendance rate',
 'Political party size',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,7,'Lesson 7: Political Impacts',
 'Definition: Political events, policies, and stability influence markets through regulation, taxation, and international relations.',
@@ -1173,7 +1173,7 @@ VALUES
 'They reduce all taxes permanently',
 'They guarantee higher profits',
 'They only affect local farmers',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,8,'Lesson 8: Trade & Tariffs',
 'Definition: Trade is the exchange of goods and services, while tariffs are taxes imposed on imports or exports.',
@@ -1184,7 +1184,7 @@ VALUES
 'To eliminate exports',
 'To fund tourism',
 'To increase global trade automatically',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,9,'Lesson 9: International Risks',
 'Definition: International risks include currency fluctuations, political instability, and trade barriers affecting cross-border investments.',
@@ -1195,7 +1195,7 @@ VALUES
 'Local parking fines',
 'Seasonal discounts',
 'Office maintenance costs',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (10,10,'Final Quiz: Global Markets Gauntlet — 5 Questions',
 'Q1. What best defines global markets?
@@ -1210,7 +1210,7 @@ VALUES
  Q4 options: A) Diversify across markets  B) Reduce profit margins  C) Avoid taxes  D) Remove liquidity
  Q5 options: A) Currency and political instability  B) Local traffic laws  C) Seasonal shopping  D) Domestic inflation only',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,1000,20000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,2000,20000);
 
 -- =======================================================
 -- COURSE 11: Entrepreneurial Engine (Tier 4 — Grandmaster Tier)
@@ -1230,7 +1230,7 @@ VALUES
 'Working as an employee in a corporation',
 'Investing without risk',
 'Following government rules only',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,2,'Lesson 2: Business Models',
 'Definition: A business model describes how a company creates, delivers, and captures value from customers.',
@@ -1241,7 +1241,7 @@ VALUES
 'The physical office setup',
 'Employee management structure',
 'Government regulations',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,3,'Lesson 3: Funding & Investment',
 'Definition: Business funding refers to the capital raised to start or grow a company through savings, investors, or loans.',
@@ -1252,7 +1252,7 @@ VALUES
 'To avoid paying taxes',
 'To limit market expansion',
 'To reduce employee count',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,4,'Lesson 4: Managing Cash Flow',
 'Definition: Cash flow management ensures that the money coming into a business exceeds the money going out.',
@@ -1263,7 +1263,7 @@ VALUES
 'A business spends more than it earns',
 'A company has zero expenses',
 'A firm avoids taxation',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,5,'Lesson 5: Cost Management',
 'Definition: Cost management is the process of planning and controlling a business’s expenses to maximize profits.',
@@ -1274,7 +1274,7 @@ VALUES
 'To reduce employee motivation',
 'To eliminate taxes',
 'To increase product prices only',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,6,'Lesson 6: Tax Implications',
 'Definition: Taxes are compulsory payments to the government based on a business’s income or operations.',
@@ -1285,7 +1285,7 @@ VALUES
 'It earns more profits legally',
 'It becomes government-owned automatically',
 'It avoids all payments',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,7,'Lesson 7: Scaling Operations',
 'Definition: Scaling is the process of expanding business capacity and revenue without a proportional increase in costs.',
@@ -1296,7 +1296,7 @@ VALUES
 'Reducing workforce permanently',
 'Increasing costs rapidly',
 'Closing unprofitable markets',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,8,'Lesson 8: Valuation Methods',
 'Definition: Valuation determines the financial worth of a company using methods like discounted cash flow (DCF) and market comparables.',
@@ -1307,7 +1307,7 @@ VALUES
 'To reduce employee numbers',
 'To decide office locations',
 'To avoid competition',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,9,'Lesson 9: Innovation & Risk',
 'Definition: Innovation involves creating new ideas, products, or processes, while risk involves uncertainty in outcomes.',
@@ -1318,7 +1318,7 @@ VALUES
 'They increase business failure',
 'They eliminate competition instantly',
 'They guarantee fixed income',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (11,10,'Final Quiz: Entrepreneurial Engine — 5 Questions',
 'Q1. What defines entrepreneurship?
@@ -1333,7 +1333,7 @@ VALUES
  Q4 options: A) Efficiently expanding capacity  B) Hiring fewer staff  C) Buying more debt  D) Raising prices only
  Q5 options: A) To determine company worth  B) To set employee salaries  C) To measure product quality  D) To increase taxes',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,1000,20000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,2000,20000);
 
 -- =======================================================
 -- COURSE 12: Alternative Assets Ascent (Tier 4 — Grandmaster Tier)
@@ -1353,7 +1353,7 @@ VALUES
 'Only government bonds and savings accounts',
 'Daily consumable goods',
 'Cash deposits only',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,2,'Lesson 2: Commodities',
 'Definition: Commodities are raw materials like gold, silver, oil, and agricultural products traded on global exchanges.',
@@ -1364,7 +1364,7 @@ VALUES
 'To reduce spending on food',
 'To increase taxes',
 'To store wealth in cash',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,3,'Lesson 3: Private Equity',
 'Definition: Private equity involves investing directly in private companies not listed on the stock exchange.',
@@ -1375,7 +1375,7 @@ VALUES
 'Government bonds trading',
 'Foreign currency speculation',
 'Short-term stock trading',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,4,'Lesson 4: Angel Investing',
 'Definition: Angel investors provide early-stage funding to startups in exchange for equity or convertible debt.',
@@ -1386,7 +1386,7 @@ VALUES
 'A government tax officer',
 'A bank loan officer',
 'A stockbroker buying public shares',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,5,'Lesson 5: Real Estate Alternatives',
 'Definition: Real estate alternatives include Real Estate Investment Trusts (REITs) and crowdfunding, allowing fractional ownership of properties.',
@@ -1397,7 +1397,7 @@ VALUES
 'Tax deduction accounts',
 'Cryptocurrency wallets',
 'Private credit institutions',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,6,'Lesson 6: Art & Collectibles',
 'Definition: Art and collectibles include paintings, vintage cars, rare coins, and memorabilia that appreciate in cultural and market value.',
@@ -1408,7 +1408,7 @@ VALUES
 'Finding rental tenants',
 'Predicting interest rates',
 'Calculating compound interest',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,7,'Lesson 7: Hedge Funds',
 'Definition: Hedge funds are pooled investment funds using advanced strategies to maximize returns and manage risk.',
@@ -1419,7 +1419,7 @@ VALUES
 'They are only government funds',
 'They focus on agriculture exclusively',
 'They are risk-free savings tools',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,8,'Lesson 8: Cryptocurrency Fundamentals',
 'Definition: Cryptocurrency is a decentralized digital asset based on blockchain technology, like Bitcoin or Ethereum.',
@@ -1430,7 +1430,7 @@ VALUES
 'A paper-based legal tender',
 'A government-issued bond',
 'A private loan agreement',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,9,'Lesson 9: Diversifying with Alternatives',
 'Definition: Diversification spreads investments across assets to reduce overall risk and enhance stability.',
@@ -1441,7 +1441,7 @@ VALUES
 'It guarantees instant profit',
 'It focuses on one asset for higher control',
 'It eliminates taxes',
-'A',2000,1000,20000),
+'A',2000,2000,20000),
 
 (12,10,'Final Quiz: Alternative Assets Ascent — 5 Questions',
 'Q1. What defines alternative investments?
@@ -1456,4 +1456,4 @@ VALUES
  Q4 options: A) Digital decentralized currency  B) Paper notes  C) Stock index  D) Credit card
  Q5 options: A) Reduces risk and increases stability  B) Guarantees losses  C) Removes taxes  D) Focuses on one stock',
 '', '', '', '', '', -- <<-- FIXED: Added 5 empty strings for question, option_a, b, c, d
-'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,1000,20000);
+'Q1:A;Q2:A;Q3:A;Q4:A;Q5:A',2000,2000,20000);
