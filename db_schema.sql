@@ -50,8 +50,18 @@ CREATE TABLE IF NOT EXISTS Course_Lessons (
     course_id INT UNSIGNED NOT NULL,
     lesson_index SMALLINT UNSIGNED NOT NULL COMMENT 'The sequential order of the lesson within the course (1, 2, 3...)',
     lesson_title VARCHAR(150) NOT NULL,
-    lesson_content TEXT NOT NULL COMMENT 'The full HTML/Markdown content of the lesson',
-    estimated_time_minutes SMALLINT UNSIGNED DEFAULT 5,
+    lesson_definition TEXT NULL,
+    lesson_explanation TEXT NULL,
+    lesson_application TEXT NULL,
+    
+    -- New question/quiz columns
+    question TEXT NULL,
+    option_a VARCHAR(255) NULL,
+    option_b VARCHAR(255) NULL,
+    option_c VARCHAR(255) NULL,
+    option_d VARCHAR(255) NULL,
+    correct_option VARCHAR(1) NULL,
+    
     -- REWARD COLUMNS 
     star_points_reward INT UNSIGNED DEFAULT 100 COMMENT 'Star Points granted for completing this lesson',
     skill_points_reward INT UNSIGNED DEFAULT 0 COMMENT 'Skill Points granted for completing this lesson (usually 0 unless final quiz)',
@@ -60,6 +70,23 @@ CREATE TABLE IF NOT EXISTS Course_Lessons (
     FOREIGN KEY (course_id) REFERENCES Courses(course_id) ON DELETE CASCADE
 );
 CREATE INDEX IF NOT EXISTS idx_lesson_course ON Course_Lessons (course_id);
+
+-- =======================================================
+-- 4A. QUIZ_QUESTIONS: Stores individual questions for the final quiz (New, separated table for clean grading)
+-- =======================================================
+CREATE TABLE IF NOT EXISTS Quiz_Questions (
+    quiz_question_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    -- Links back to the parent lesson (the final quiz lesson, e.g., Lesson Index 10)
+    lesson_id INT UNSIGNED NOT NULL,
+    question_text TEXT NOT NULL,
+    option_a VARCHAR(255) NOT NULL,
+    option_b VARCHAR(255) NOT NULL,
+    option_c VARCHAR(255) NOT NULL,
+    option_d VARCHAR(255) NOT NULL,
+    correct_option ENUM('A', 'B', 'C', 'D') NOT NULL,
+    
+    FOREIGN KEY (lesson_id) REFERENCES Course_Lessons(lesson_id) ON DELETE CASCADE
+);
 
 -- =======================================================
 -- 5. USER_STATS: Stores user-specific scoring and currencies
