@@ -10,6 +10,11 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // --- FETCH USER DETAILS ---
 $userQuery = "SELECT username FROM Users WHERE user_id = ?";
 $stmt = $conn->prepare($userQuery);
@@ -18,25 +23,18 @@ $stmt->execute();
 $userResult = $stmt->get_result()->fetch_assoc();
 $username = $userResult['username'] ?? "User";
 
-// --- FETCH USER STATS ---
-$statsQuery = "SELECT star_points, skill_points, leaderboard_points FROM User_Stats WHERE user_id = ?";
-$stmt = $conn->prepare($statsQuery);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$stats = $stmt->get_result()->fetch_assoc();
-
-$starPoints = $stats['star_points'] ?? 0;
-$skillPoints = $stats['skill_points'] ?? 0;
-$leaderboardPoints = $stats['leaderboard_points'] ?? 0;
-
 // --- FETCH LAST LESSON COMPLETED ---
 $lessonQuery = "
-    SELECT c.course_name, l.lesson_name, l.lesson_id, c.course_id
+    SELECT 
+        c.course_name, 
+        l.lesson_title, 
+        l.lesson_id, 
+        c.course_id
     FROM User_Lesson_Completion ulc
-    JOIN Lessons l ON ulc.lesson_id = l.lesson_id
+    JOIN course_lessons l ON ulc.lesson_id = l.lesson_id
     JOIN Courses c ON l.course_id = c.course_id
     WHERE ulc.user_id = ?
-    ORDER BY ulc.completed_at DESC
+    ORDER BY ulc.user_lesson_id DESC
     LIMIT 1;
 ";
 $stmt = $conn->prepare($lessonQuery);
@@ -44,22 +42,34 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $lessonResult = $stmt->get_result()->fetch_assoc();
 
-$lastLesson = $lessonResult['lesson_name'] ?? "No lessons completed yet";
-$lastCourse = $lessonResult['course_name'] ?? "";
-$nextLessonLink = isset($lessonResult['lesson_id']) ? "../courses/view_lesson.php?course_id={$lessonResult['course_id']}&lesson_id={$lessonResult['lesson_id']}" : "#";
+$lastLesson = $lessonResult['lesson_title'] ?? "No lessons completed yet";
+$lastCourse = $lessonResult['course_name'] ?? "Start your first lesson!";
+$nextLessonLink = isset($lessonResult['lesson_id'])
+    ? "../courses/view_lesson.php?course_id=" . urlencode($lessonResult['course_id']) . "&lesson_id=" . urlencode($lessonResult['lesson_id'])
+    : "../courses/courses.php"; // Changed default link to courses page
 
-// --- FETCH MINI LEADERBOARD PREVIEW ---
-$leaderboardQuery = "
-    SELECT u.username, s.leaderboard_points
-    FROM Users u
-    JOIN User_Stats s ON u.user_id = s.user_id
-    ORDER BY s.leaderboard_points DESC
-    LIMIT 5;
+// --- FETCH USER RANK ---
+$rankQuery = "
+    SELECT COUNT(*) + 1 AS user_rank
+    FROM User_Stats
+    WHERE leaderboard_points > (SELECT leaderboard_points FROM User_Stats WHERE user_id = ?)
 ";
-$leaderboardResult = $conn->query($leaderboardQuery);
+$stmt = $conn->prepare($rankQuery);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$rankResult = $stmt->get_result()->fetch_assoc();
+$userRank = $rankResult['user_rank'] ?? 1;
 
-// --- CALCULATE PROGRESS TO GRANDMASTER ---
-$progressPercent = min(100, ($skillPoints / 5000) * 100); // 5000 skill points = Grandmaster
+// --- FETCH USER PROGRESS ---
+$statsQuery = "SELECT skill_points FROM User_Stats WHERE user_id = ?";
+$stmt = $conn->prepare($statsQuery);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stats = $stmt->get_result()->fetch_assoc();
+
+$skillPoints = $stats['skill_points'] ?? 0;
+$progressPercent = min(100, ($skillPoints / 5000) * 100);
+
 $rankName = "Novice";
 if ($progressPercent >= 80) $rankName = "Grandmaster";
 elseif ($progressPercent >= 60) $rankName = "Expert";
@@ -74,131 +84,33 @@ elseif ($progressPercent >= 20) $rankName = "Intermediate";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | CoinFlow Academy</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../global_styles.css">
     <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom Dashboard Styling */
-        body {
-            background-color: var(--secondary-background-color);
-            color: var(--text-color);
-            font-family: var(--font-family);
-        }
-
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 20px;
-        }
-
-        .welcome-header {
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--tertiary-accent-color);
-            text-shadow: 0 0 10px rgba(250, 151, 130, 0.6);
-        }
-
-        .card {
-            background-color: var(--secondary-background-color);
-            border: 2px solid var(--primary-accent-color);
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(250, 151, 130, 0.2);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(250, 151, 130, 0.4);
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .progress-container {
-            background-color: var(--primary-background-color);
-            border-radius: 20px;
-            padding: 15px;
-        }
-
-        .progress {
-            height: 25px;
-            border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            background: linear-gradient(90deg,
-                var(--primary-accent-color),
-                var(--secondary-accent-color),
-                var(--tertiary-accent-color)
-            );
-            height: 100%;
-            transition: width 1s ease-in-out;
-        }
-
-        .mini-leaderboard table {
-            color: var(--text-color);
-        }
-
-        .jump-back-card h5 {
-            color: var(--secondary-accent-color);
-        }
-
-        .resume-btn {
-            background: var(--primary-accent-color);
-            border: none;
-            color: white;
-            border-radius: 12px;
-            padding: 8px 20px;
-            margin-top: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .resume-btn:hover {
-            background: var(--tertiary-accent-color);
-        }
-
-        .quick-links button {
-            background: transparent;
-            border: 2px solid var(--secondary-accent-color);
-            color: var(--text-color);
-            padding: 10px 15px;
-            border-radius: 12px;
-            margin: 5px;
-            transition: 0.3s;
-        }
-
-        .quick-links button:hover {
-            background: var(--secondary-accent-color);
-            color: #000;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 
 <?php include("../global_navigation.php"); ?>
 
-<div class="dashboard-container">
-    <h1 class="welcome-header">Welcome back, <?php echo htmlspecialchars($username); ?> 👋</h1>
+<main class="dashboard-container">
+    <h1 class="welcome-header">Welcome back, <?php echo htmlspecialchars($username); ?></h1>
 
-    <div class="row g-4">
-        <!-- Jump Back In -->
-        <div class="col-md-6">
-            <div class="card jump-back-card p-4">
-                <h5>📚 Jump Back In</h5>
-                <p><strong><?php echo htmlspecialchars($lastLesson); ?></strong></p>
-                <small><?php echo htmlspecialchars($lastCourse); ?></small><br>
-                <a href="<?php echo $nextLessonLink; ?>" class="resume-btn">Continue Learning →</a>
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card jump-back-card p-5">
+                <h5>Jump Back In</h5>
+                <p class="lesson-title"><?php echo htmlspecialchars($lastLesson); ?></p>
+                <p class="course-name"><?php echo htmlspecialchars($lastCourse); ?></p>
+                <a href="<?php echo htmlspecialchars($nextLessonLink); ?>" class="resume-btn mt-3">Continue Learning →</a>
             </div>
         </div>
+    </div>
 
-        <!-- Progress Bar -->
-        <div class="col-md-6">
+    <div class="row g-4 justify-content-center mt-4">
+        <div class="col-lg-6 col-md-8">
             <div class="card p-4 progress-container">
-                <h5>🎯 Progress to Grandmaster</h5>
+                <h5>Progress to Grandmaster</h5>
                 <div class="progress mt-3">
                     <div class="progress-bar" style="width: <?php echo $progressPercent; ?>%;"></div>
                 </div>
@@ -207,60 +119,29 @@ elseif ($progressPercent >= 20) $rankName = "Intermediate";
         </div>
     </div>
 
-    <!-- Stats Row -->
-    <div class="row g-4 mt-4">
-        <div class="col-md-4">
-            <div class="card stat-card">
-                <h4>⭐ Star Points</h4>
-                <h2><?php echo $starPoints; ?></h2>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card stat-card">
-                <h4>💡 Skill Points</h4>
-                <h2><?php echo $skillPoints; ?></h2>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card stat-card">
-                <h4>🏆 Leaderboard Points</h4>
-                <h2><?php echo $leaderboardPoints; ?></h2>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mini Leaderboard + Quick Links -->
-    <div class="row g-4 mt-5">
-        <div class="col-md-6 mini-leaderboard">
-            <div class="card p-4">
-                <h5>🏅 Top 5 Players</h5>
-                <table class="table mt-3">
-                    <thead>
-                        <tr><th>User</th><th>Points</th></tr>
-                    </thead>
-                    <tbody>
-                    <?php while ($row = $leaderboardResult->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['username']); ?></td>
-                            <td><?php echo $row['leaderboard_points']; ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                    </tbody>
-                </table>
+    <div class="row g-4 mt-5 justify-content-center">
+        <div class="col-lg-5 col-md-6 mini-leaderboard">
+            <div class="card p-4 text-center">
+                <h5>Your Leaderboard Rank</h5>
+                <h2 class="display-5 text-accent">#<?php echo $userRank; ?></h2>
+                <p>Keep learning to climb higher!</p>
                 <a href="../leaderboard/leaderboard.php" class="resume-btn mt-2">View Full Leaderboard</a>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card p-4 quick-links">
-                <h5>⚡ Quick Links</h5>
+        <div class="col-lg-5 col-md-6">
+            <div class="card p-4 quick-links text-center">
+                <h5>Quick Links</h5>
                 <button onclick="window.location.href='../skill_tree/skill_tree.php'">Skill Tree</button>
                 <button onclick="window.location.href='../leaderboard/leaderboard.php'">Leaderboard</button>
                 <button onclick="window.location.href='../account/logout_handler.php'">Logout</button>
             </div>
         </div>
     </div>
-</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../global_navigation.js"></script>
 
 </body>
 </html>

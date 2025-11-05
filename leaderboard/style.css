@@ -1,52 +1,198 @@
 @import url("../global_styles.css");
 
+/* ---------- Global Layout Override ---------- */
+/* We only override the background and text color.
+    Font-family, margin, and padding are assumed 
+    to be set in the imported global_styles.css
+*/
 body {
-    background-color: var(--secondary-background-color);
-    color: var(--text-color);
-    font-family: var(--font-family);
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
 }
 
-.leaderboard-title {
-    color: var(--tertiary-accent-color);
-    font-weight: bold;
-    text-shadow: 0 0 15px rgba(250, 151, 130, 0.6);
-}
-
+/* ---------- Leaderboard Container ---------- */
 .leaderboard-container {
-    padding-bottom: 60px;
+    max-width: 900px; /* Tables look better slightly narrower than dashboards */
+    margin: 3rem auto;
+    padding: 20px;
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.4);
+    border-radius: 10px;
+    background-color: var(
+        --secondary-background-color
+    ); /* Ensure container bg */
 }
 
-.leaderboard-table {
-    border-collapse: separate;
-    border-spacing: 0 10px;
+/* ---------- Page Header ---------- */
+.page-header {
+    color: var(--quaternary-accent-color);
+    text-align: center;
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    font-weight: 800;
 }
 
-.leaderboard-table th {
-    color: var(--secondary-accent-color);
-    border-bottom: 2px solid var(--primary-accent-color);
-    font-size: 1.2rem;
-}
-
-.leaderboard-table td {
-    background-color: var(--secondary-background-color);
+/* ---------- Table Container (Card-like) ---------- */
+.table-container {
+    background-color: var(
+        --secondary-background-color
+    ); /* Use card background */
     border: 1px solid var(--primary-accent-color);
-    color: var(--text-color);
-    font-size: 1.1rem;
-    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden; /* To clip the table's corners */
 }
 
-.leaderboard-table tr:hover td {
-    background-color: rgba(250, 151, 130, 0.1);
+/* ---------- Leaderboard Table ---------- */
+.leaderboard-table {
+    margin-bottom: 0; /* Remove default bootstrap margin */
+    color: var(--text-color);
+}
+
+.leaderboard-table thead th {
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.2
+    ); /* Darker header bg for contrast */
+    color: var(--quaternary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid var(--primary-accent-color) !important;
+    white-space: nowrap;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.leaderboard-table tbody td {
+    padding: 1rem 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Faint row separator */
+}
+
+.leaderboard-table tbody tr:first-child td {
+    border-top: none; /* No border for the first row */
+}
+
+.leaderboard-table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Specific Cells --- */
+.rank-cell {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-accent-color);
+    width: 10%;
+}
+
+.username-cell {
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left !important; /* Usernames look better left-aligned */
+    padding-left: 1.5rem !important;
+}
+
+.points-cell {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--tertiary-accent-color);
+}
+
+.currency-cell {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.currency_icon_small {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+}
+
+/* --- Current User Highlight --- */
+.current-user {
+    /* Use button hover style for high visibility */
+    background-color: var(--secondary-accent-color) !important;
+    color: #000 !important;
+    box-shadow: 0 0 10px var(--secondary-accent-color);
+    border-top: 2px solid var(--secondary-accent-color) !important;
+    border-bottom: 2px solid var(--secondary-accent-color) !important;
 }
 
 .current-user td {
-    background-color: rgba(184, 77, 58, 0.3);
-    border: 2px solid var(--tertiary-accent-color);
-    box-shadow: 0 0 10px rgba(250, 151, 130, 0.4);
+    color: #000 !important;
     font-weight: bold;
+    text-shadow: none;
+}
+.current-user .points-cell,
+.current-user .rank-cell {
+    color: #000 !important; /* Ensure high contrast */
 }
 
-.rank-highlight {
-    color: var(--tertiary-accent-color);
+/* ---------- User Rank Info Box (Card-like) ---------- */
+.user-rank-info {
+    /* Use card styling */
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-accent-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+}
+
+.user-rank-info h5 {
+    /* Style from .mini-leaderboard h5 */
+    color: var(--quaternary-accent-color);
     font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.user-rank-info .rank-highlight {
+    /* Style from .mini-leaderboard h2 */
+    color: var(--secondary-accent-color);
+    font-weight: 800;
+    text-shadow: 0 0 10px var(--secondary-accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-rank-info p {
+    /* Style from .mini-leaderboard p */
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .leaderboard-container {
+        padding: 15px;
+        margin: 1.5rem auto;
+    }
+    .page-header {
+        font-size: 1.3rem;
+        padding: 0.8rem;
+    }
+    .leaderboard-table {
+        font-size: 0.9rem; /* Make table text smaller on mobile */
+    }
+    .leaderboard-table thead th,
+    .leaderboard-table tbody td {
+        padding: 0.75rem 0.5rem; /* Reduce padding */
+    }
+    .username-cell {
+        padding-left: 0.75rem !important;
+    }
+    .user-rank-info .rank-highlight {
+        font-size: 2rem;
+    }
 }

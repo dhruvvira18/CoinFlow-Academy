@@ -1,15 +1,22 @@
 <?php
 session_start();
-require_once('../setup.php');
+// MODIFIED: Corrected the path to include your project folder 'CoinFlow-Academy'
+require_once($_SERVER['DOCUMENT_ROOT'] . '/CoinFlow-Academy/setup.php');
 
 // --- ACCESS CONTROL ---
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../account/login.html");
+    // MODIFIED: Corrected path
+    header("Location: /CoinFlow-Academy/account/login.html"); 
     exit();
 }
 
 $current_user_id = $_SESSION['user_id'];
+
 $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // --- FETCH LEADERBOARD DATA ---
 $query = "
     SELECT 
@@ -47,61 +54,80 @@ $userRank = $rankResult ? $rankResult['user_rank'] : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard | CoinFlow Academy</title>
 
-    <link rel="stylesheet" href="../global_styles.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="../images/logo.png" type="image/png">
+    <!-- MODIFIED: Corrected all paths to include your project folder -->
+    
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/CoinFlow-Academy/leaderboard/style.css"> 
+    <link rel="icon" href="/CoinFlow-Academy/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="/CoinFlow-Academy/global_styles.css">
+    
 </head>
 
 <body>
-    <?php include("../global_navigation.php"); ?>
+    <?php 
+    // MODIFIED: Corrected the path
+    include($_SERVER['DOCUMENT_ROOT'] . "/CoinFlow-Academy/global_navigation.php"); 
+    ?>
 
     <div class="container mt-5 leaderboard-container">
-        <h1 class="leaderboard-title text-center">🏆 Global Leaderboard</h1>
-        <p class="text-center text-muted mb-4">Top players ranked by total Leaderboard Points</p>
+        <h1 class="page-header text-center">Global Leaderboard</h1>
+        <p class="text-center text-white-50 mb-4">Top players ranked by total Leaderboard Points</p>
 
-        <div class="table-responsive">
-            <table class="table leaderboard-table table-borderless align-middle text-center">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Username</th>
-                        <th>⭐ Star Points</th>
-                        <th>💡 Skill Points</th>
-                        <th>🏆 Leaderboard Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $rank = 1;
-                    while ($row = $result->fetch_assoc()):
-                        $isCurrent = ($row['user_id'] == $current_user_id);
-                        $highlightClass = $isCurrent ? 'current-user' : '';
-                    ?>
-                    <tr class="<?php echo $highlightClass; ?>">
-                        <td>
-                            <?php
-                                if ($rank == 1) echo "🥇";
-                                elseif ($rank == 2) echo "🥈";
-                                elseif ($rank == 3) echo "🥉";
-                                else echo $rank;
-                            ?>
-                        </td>
-                        <td><?php echo htmlspecialchars($row['username']); ?></td>
-                        <td><?php echo $row['star_points']; ?></td>
-                        <td><?php echo $row['skill_points']; ?></td>
-                        <td><?php echo $row['leaderboard_points']; ?></td>
-                    </tr>
-                    <?php $rank++; endwhile; ?>
-                </tbody>
-            </table>
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table leaderboard-table table-borderless align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <!-- MODIFIED: Corrected all paths -->
+                            <th>Star Points</th>
+                            <th> Skill Points</th>
+                            <th>Leaderboard Points</th>
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <?php
+                        $rank = 1;
+                        while ($result && $row = $result->fetch_assoc()):
+                            $isCurrent = ($row['user_id'] == $current_user_id);
+                            $highlightClass = $isCurrent ? 'current-user' : '';
+                        ?>
+                        <tr class="<?php echo $highlightClass; ?>">
+                            <td class="rank-cell">
+                                <?php
+                                    if ($rank == 1) echo "🥇";
+                                    elseif ($rank == 2) echo "🥈";
+                                    elseif ($rank == 3) echo "🥉";
+                                    else echo "#" . $rank;
+                                ?>
+                            </td>
+                            <td class="username-cell"><?php echo htmlspecialchars($row['username']); ?></td>
+                            <td class="currency-cell"><?php echo number_format($row['star_points']); ?></td>
+                            <td class="currency-cell"><?php echo number_format($row['skill_points']); ?></td>
+                            <td class="points-cell"><?php echo number_format($row['leaderboard_points']); ?></td>
+                        </tr>
+                        <?php $rank++; endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <?php if ($userRank): ?>
         <div class="user-rank-info text-center mt-4">
-            <h5>Your Rank: <span class="rank-highlight">#<?php echo $userRank; ?></span></h5>
+            <h5>Your Global Rank</h5>
+            <h2 class="rank-highlight">#<?php echo $userRank; ?></h2>
+            <p class="mb-0">Keep learning to climb higher!</p>
         </div>
         <?php endif; ?>
     </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- MODIFIED: Corrected path -->
+    <script src="/CoinFlow-Academy/global_navigation.js"></script> 
 </body>
 </html>

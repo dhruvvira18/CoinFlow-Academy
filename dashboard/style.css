@@ -1,22 +1,174 @@
 @import url("../global_styles.css");
 
+/* ---------- Global Layout ---------- */
 body {
-    background-color: var(--secondary-background-color);
-    color: var(--text-color);
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
     font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
 }
 
-.text-accent {
-    color: var(--tertiary-accent-color);
+/* ---------- Dashboard Container ---------- */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 20px;
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.4);
+    border-radius: 10px;
 }
 
+/* ---------- Welcome Header ---------- */
+.welcome-header {
+    color: var(--quaternary-accent-color);
+    text-align: center;
+    border: 2px solid var(--secondary-accent-color);
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Cards ---------- */
 .card {
-    background-color: var(--secondary-background-color);
-    border: 2px solid var(--primary-accent-color);
-    color: var(--text-color);
-    transition: transform 0.3s ease;
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--primary-accent-color) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Jump Back In ---------- */
+.jump-back-card {
+    text-align: center;
+    padding: 2rem !important;
+}
+.jump-back-card h5 {
+    color: var(--quaternary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* --- MODIFIED RULES --- */
+.jump-back-card .lesson-title {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+.jump-back-card .course-name {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+/* --- END MODIFIED RULES --- */
+
+
+/* ---------- Resume Button ---------- */
+.resume-btn {
+    display: inline-block !important;
+    background: transparent !important;
+    border: 2px solid var(--secondary-accent-color) !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+    padding: 0.7rem 1rem !important;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    transition: all 0.3s ease-in-out !important;
+    text-decoration: none !important;
+}
+
+.resume-btn:hover {
+    background-color: var(--secondary-accent-color) !important;
+    color: #000 !important;
+    box-shadow: 0 0 10px var(--secondary-accent-color);
+}
+
+/* ---------- Progress Container ---------- */
+.progress-container h5 {
+    color: var(--quaternary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+.progress-container p {
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+.progress {
+    height: 25px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+    background: linear-gradient(
+        90deg,
+        var(--primary-accent-color),
+        var(--secondary-accent-color),
+        var(--tertiary-accent-color)
+    );
+}
+
+/* ---------- Leaderboard ---------- */
+.mini-leaderboard h5 {
+    color: var(--quaternary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+.mini-leaderboard h2 {
+    /* Color is set by .text-accent in the HTML */
+    font-weight: 800;
+    text-shadow: 0 0 10px var(--secondary-accent-color);
+}
+.mini-leaderboard p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+/* ---------- Quick Links ---------- */
+.quick-links h5 {
+    color: var(--quaternary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+.quick-links button {
+    background: transparent !important;
+    border: 2px solid var(--secondary-accent-color) !important;
+    color: #ffffff !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 10px !important;
+    font-weight: bold !important;
+    margin: 0.3rem;
+    transition: all 0.3s ease-in-out;
+}
+.quick-links button:hover {
+    background-color: var(--secondary-accent-color) !important;
+    color: #000 !important;
+    box-shadow: 0 0 10px var(--secondary-accent-color);
+}
+
+/* ---------- Text Accent ---------- */
+.text-accent {
+    color: var(--secondary-accent-color);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .dashboard-container { padding: 15px; }
+    .welcome-header { font-size: 1.3rem; padding: 0.8rem; }
+    .jump-back-card { padding: 1.5rem !important; }
+    .mini-leaderboard h2 { font-size: 2rem; }
 }
