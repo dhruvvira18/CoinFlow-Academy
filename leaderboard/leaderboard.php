@@ -1,12 +1,12 @@
 <?php
 session_start();
-// MODIFIED: Corrected the path to include your project folder 'CoinFlow-Academy'
-require_once($_SERVER['DOCUMENT_ROOT'] . '/CoinFlow-Academy/setup.php');
+include_once '../setup.php';
 
 // --- ACCESS CONTROL ---
-if (!isset($_SESSION['user_id'])) {
-    // MODIFIED: Corrected path
-    header("Location: /CoinFlow-Academy/account/login.html"); 
+// Authentication Check
+if (!$user_id) {
+    // Redirect to login page if user is not authenticated
+    header("Location: ../account/login.html");
     exit();
 }
 
@@ -52,7 +52,7 @@ $userRank = $rankResult ? $rankResult['user_rank'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard | CoinFlow Academy</title>
+    <title>Leaderboard</title>
 
     <!-- MODIFIED: Corrected all paths to include your project folder -->
     
@@ -60,16 +60,16 @@ $userRank = $rankResult ? $rankResult['user_rank'] : null;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/CoinFlow-Academy/leaderboard/style.css"> 
-    <link rel="icon" href="/CoinFlow-Academy/images/logo.png" type="image/png">
-    <link rel="stylesheet" href="/CoinFlow-Academy/global_styles.css">
+    <link rel="stylesheet" href="../global_styles.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="stylesheet" href="./style.css">
     
 </head>
 
 <body>
     <?php 
     // MODIFIED: Corrected the path
-    include($_SERVER['DOCUMENT_ROOT'] . "/CoinFlow-Academy/global_navigation.php"); 
+    require_once '../global_navigation.php';
     ?>
 
     <div class="container mt-5 leaderboard-container">

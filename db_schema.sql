@@ -111,6 +111,7 @@ CREATE TABLE IF NOT EXISTS User_Course_Progress (
     last_lesson_completed INT UNSIGNED NULL COMMENT 'The lesson_id of the last lesson completed (used for navigation/resumption)',
     progress_percentage TINYINT UNSIGNED DEFAULT 0,
     completed_at TIMESTAMP NULL,
+    star_points_earned INT UNSIGNED DEFAULT 0 COMMENT 'Total Star Points earned from this course',
     UNIQUE KEY uc_user_course (user_id, course_id),
     CONSTRAINT chk_progress_percentage CHECK (progress_percentage <= 100),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,

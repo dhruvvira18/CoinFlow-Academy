@@ -45,8 +45,8 @@ $lessonResult = $stmt->get_result()->fetch_assoc();
 $lastLesson = $lessonResult['lesson_title'] ?? "No lessons completed yet";
 $lastCourse = $lessonResult['course_name'] ?? "Start your first lesson!";
 $nextLessonLink = isset($lessonResult['lesson_id'])
-    ? "../courses/view_lesson.php?course_id=" . urlencode($lessonResult['course_id']) . "&lesson_id=" . urlencode($lessonResult['lesson_id'])
-    : "../courses/courses.php"; // Changed default link to courses page
+    ? "../lessons/view_lesson.php?course_id=" . urlencode($lessonResult['course_id']) . "&lesson_id=" . urlencode($lessonResult['lesson_id'])
+    : "../skill_tree/skill_tree.php";
 
 // --- FETCH USER RANK ---
 $rankQuery = "
