@@ -1,0 +1,222 @@
+/* Import global variables and font definitions */
+@import url("../global_styles.css");
+
+/* --- General Body and Container Styles --- */
+
+/* Inherit background and font from global_styles */
+body {
+    background-color: var(--primary-background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.profile-container {
+    max-width: 900px;
+}
+
+h1, h2, h5 {
+    color: var(--tertiary-accent-color); /* Bright accent for headings */
+    font-weight: bold;
+}
+
+/* Override default Bootstrap font-size for consistency with VT323 */
+.display-4 {
+    font-size: 3rem; 
+}
+
+/* --- Equipped Preview Section --- */
+
+.equipped-preview-card {
+    background: var(--secondary-background-color);
+    border: 3px solid var(--primary-accent-color);
+    border-radius: 0; /* Retro/Pixel aesthetic usually avoids rounded corners */
+    box-shadow: 0 0 15px 5px rgba(184, 77, 58, 0.4); /* Glow effect */
+    padding: 2rem !important;
+}
+
+/* The area where the Avatar and Frame overlap */
+.preview-stage {
+    width: 120px; 
+    height: 120px; 
+    margin: 0 auto;
+    /* The avatar and frame are positioned relative to this element */
+    position: relative; 
+}
+
+.equipped-avatar {
+    /* Set to fill the container (Avatar size is 100x100 in the frame's 120x120 container) */
+    width: 180px; /* Reduced from 100% to match the placeholder size for better control */
+    height: 180px; /* Reduced from 100% */
+    object-fit: cover;
+    /* Positioning relative to .preview-stage */
+    position: absolute; 
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Crucial for perfect centering */
+    z-index: 10; /* Lower index so the frame goes over it */
+}
+
+.equipped-frame {
+    /* Set to fill the container (it's 120x120 in the frame's 120x120 container) */
+    width: 240px; /* Use absolute size instead of 120% */
+    height: 240px; /* Use absolute size instead of 120% */
+    object-fit: contain;
+    /* Ensure it is absolutely positioned and starts at the top-left */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    transform: translate(-25%, -25%); 
+    z-index: 20; /* Higher index to appear in front of the avatar */
+    border-radius: 0;
+}
+
+.badge-display-area {
+    padding: 10px;
+    border-left: 2px solid var(--secondary-accent-color);
+}
+
+.equipped-badge-seperate {
+    width: 180px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.equipped-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.equipped-details strong {
+    color: var(--secondary-accent-color);
+}
+
+/* --- Inventory Tabs --- */
+.inventory-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-accent-color);
+}
+
+.inventory-tab-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 10px 20px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    font-size: 1.5rem;
+}
+
+.inventory-tab-btn:hover {
+    color: var(--tertiary-accent-color);
+}
+
+.inventory-tab-btn.active {
+    border-bottom: 2px solid var(--tertiary-accent-color);
+    color: var(--tertiary-accent-color);
+}
+
+/* --- Inventory Content Cards --- */
+.inventory-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.cosmetic-item-card {
+    background-color: #384553; 
+    border: 2px solid var(--secondary-accent-color);
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+    min-height: 250px;
+}
+
+.cosmetic-item-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--tertiary-accent-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+.cosmetic-item-card.equipped {
+    border-color: #4CAF50; /* Distinct equipped color */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+}
+
+.equip-image {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    padding: 10px;
+    border-radius: 0;
+    image-rendering: pixelated; /* Apply pixelated effect to inventory images */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.equipped-tag {
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 0;
+    background-color: #4CAF50; /* Green background */
+    color: var(--text-color);
+}
+
+/* Custom button styling to match the theme */
+.equip-btn {
+    background-color: var(--primary-accent-color);
+    border: 2px solid var(--secondary-accent-color);
+    color: var(--text-color);
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 1.1rem;
+    border-radius: 0;
+}
+
+.equip-btn:hover {
+    background-color: var(--secondary-accent-color);
+    border-color: var(--tertiary-accent-color);
+}
+
+/* Style for "None Equipped" icon */
+.fa-times-circle {
+    color: var(--primary-accent-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .inventory-tabs-container {
+        flex-direction: column;
+    }
+
+    .inventory-content {
+        justify-content: center;
+    }
+
+    .equipped-preview-card {
+        padding: 15px;
+    }
+
+    .badge-display-area {
+        margin-left: 0 !important;
+        margin-top: 15px;
+        border-left: none;
+        border-top: 2px solid var(--secondary-accent-color);
+        width: 100%;
+    }
+
+    .equipped-badge-seperate {
+        width: 100%;
+    }
+}
