@@ -7,7 +7,7 @@ require_once 'setup.php';
                 <span class="navbar-toggler-icon"></span> 
         </button> 
 
-        <a class="navbar-brand d-flex align-items-center custom-brand-text" href="index.html">
+        <a class="navbar-brand d-flex align-items-center custom-brand-text" href="../dashboard/dashboard.php">
             <img src="../images/logo.png" alt="Website Logo" class="me-2 custom-logo">
             CoinFlow Academy
         </a>
@@ -44,8 +44,12 @@ require_once 'setup.php';
     <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
+                <a class="nav-link offcanvas-link<?php echo ($current_page === 'profile.php') ? ' active' : ''; ?>"
+                <?php echo ($current_page === 'profile.php') ? 'aria-current="page"' : ''; ?> href="../profile/profile.php">My Profile</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link offcanvas-link<?php echo ($current_page === 'dashboard.php') ? ' active' : ''; ?>" 
-                <?php echo ($current_page === 'dashboard.php') ? 'aria-current="page"' : ''; ?> href="../dashboard/dashboard.php">Home</a>
+                <?php echo ($current_page === 'dashboard.php') ? 'aria-current="page"' : ''; ?> href="../dashboard/dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link offcanvas-link<?php echo ($current_page === 'skill_tree.php') ? ' active' : ''; ?>" 
@@ -53,14 +57,11 @@ require_once 'setup.php';
             </li>
             <li class="nav-item">
                 <a class="nav-link offcanvas-link<?php echo ($current_page === 'marketplace.php') ? ' active' : ''; ?>"
-                <?php echo ($current_page === 'marketplace.php') ? 'aria-current="page"' : ''; ?> href="">Marketplace</a>
+                <?php echo ($current_page === 'marketplace.php') ? 'aria-current="page"' : ''; ?> href="../marketplace/marketplace.php">Marketplace</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link offcanvas-link<?php echo ($current_page === 'leaderboard.php') ? ' active' : ''; ?>"
-                <?php echo ($current_page === 'leaderboard.php') ? 'aria-current="page"' : ''; ?> class="nav-link offcanvas-link" href="">Leaderboard</a>
-            </li>
-            <li class="nav-item mt-3 pt-3 border-top border-secondary">
-                <a class="nav-link offcanvas-link" href="">About Us</a>
+                <?php echo ($current_page === 'leaderboard.php') ? 'aria-current="page"' : ''; ?> href="../leaderboard/leaderboard.php">Leaderboard</a>
             </li>
             <li class="nav-item mt-3 pt-3 border-top border-secondary">
                 <a class="nav-link offcanvas-link" href="../account/logout_handler.php">Logout</a>

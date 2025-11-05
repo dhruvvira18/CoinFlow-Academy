@@ -1,0 +1,125 @@
+@import url("../global_styles.css");
+
+body {
+    background-color: var(--secondary-background-color);
+}
+
+.marketplace-tabs-container {
+    padding: 20px;
+    border-bottom: 1px solid var(--secondary-accent-color);
+}
+
+/* Tab Button Styling */
+.marketplace-tab-btn {
+    background-color: var(--secondary-background-color);
+    border-color: var(--secondary-background-color);
+    color: var(--primary-accent-color);
+    font-size: 2.0rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.marketplace-tab-btn.active {
+    border-bottom: 1px solid var(--primary-accent-color);
+}
+
+.marketplace-tab-btn:hover {
+    color: var(--tertiary-accent-color);
+    background-color: var(--secondary-background-color);
+}
+
+.marketplace-tab-btn.active:hover {
+    border: 1px solid var(--tertiary-accent-color);
+}
+
+/* --- Overrides for Button Classes --- */
+.purchase-cosmetic-btn.btn-success, .purchase-bundle-btn.btn-success {
+    background-color: var(--primary-accent-color) !important;
+    border-color: var(--primary-accent-color) !important;
+    color: var(--text-color) !important;
+    font-weight: bold;
+}
+
+/* Weekly Deals and Featured Content Styling */
+.marketplace-weekly-deals-content, .marketplace-featured-bundles-content {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.weekly-deals-cosmetic-card-title {
+    color: var(--quaternary-accent-color);
+}
+
+.featured-bundle-card-title {
+    color: var(--secondary-accent-color);
+}
+
+.featured-bundle-card-description {
+    color: var(--quaternary-accent-color);
+}
+
+.purchase-cosmetic-btn, .purchase-bundle-btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+.weekly-deals-cosmetic-card, .featured-bundle-card {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-accent-color);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(212, 106, 84, 0.5);
+}
+
+.weekly-deals-cosmetic-card:hover, .featured-bundle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.featured-bundle-item-image {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+}
+
+.featured-bundle-card-cost {
+    margin-bottom: 2%;
+}
+
+/* --- COUNTDOWN STYLING --- */
+
+/* Weekly Deals Countdown Container */
+.weekly-refresh-countdown-container {
+    color: var(--primary-accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(212, 106, 84, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.weekly-refresh-countdown-title {
+    margin-bottom: -5px;
+}
+
+/* General Timer Styling */
+.countdown-timer {
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+.countdown-value {
+    color: var(--tertiary-accent-color);
+    margin: 0 0.1rem;
+}
+
+/* Featured Bundle Countdown Styling */
+.offer-end-text {
+    color: var(--primary-accent-color);
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: -5px;
+}
